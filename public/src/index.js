@@ -23,12 +23,12 @@ let scrape = async () => {
     elements.forEach((element) => {
       artist = element.childNodes[1].innerText;
       venue = element.childNodes[3].childNodes[3].children[0].innerHTML;
-    })
 
-    data.push({
-      'artist': artist,
-      'venue': venue
-    });
+      data.push({
+        'artist': artist,
+        'venue': venue
+      });
+    })
 
     scrapedEvents['data'] = data
     return scrapedEvents;
