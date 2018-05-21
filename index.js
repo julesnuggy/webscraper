@@ -42,5 +42,5 @@ return result;
 };
 
 scrape().then((value) => {
-  console.log(value); // Success!
+  console.log(value);
 });
