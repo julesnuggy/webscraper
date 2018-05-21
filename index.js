@@ -1,12 +1,9 @@
 const puppeteer = require('puppeteer');
 
 let scrape = async () => {
-  const browser = await puppeteer.launch({headless: false});
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.setViewport({
-        width: 1280,
-        height: 800
-    });
+
   await page.goto('http://www.wegottickets.com/');
   await page.click('#adv_genre');
   await page.select('select#adv_genre', '11');
@@ -37,7 +34,7 @@ let scrape = async () => {
     })
 
     scrapedEvents['data'] = data
-    return scrapedEvents;
+    return JSON.stringify(scrapedEvents);
   })
 
 browser.close();
