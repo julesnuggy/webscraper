@@ -16,17 +16,23 @@ let scrape = async () => {
   const result = await page.evaluate(() => {
     let scrapedEvents = {};
     let data = [];
-    let element, artist, venue;
+    let element, artist, venue, date, detailedPrice, finalPound, price;
 
     let elements = document.querySelectorAll('div.content.block-group.chatterbox-margin')
 
     elements.forEach((element) => {
       artist = element.childNodes[1].innerText;
       venue = element.childNodes[3].childNodes[3].children[0].innerHTML;
+      date = element.childNodes[3].childNodes[3].children[1].innerHTML;
+      detailedPrice = element.childNodes[5].childNodes[1].innerText;
+      finalPound = detailedPrice.lastIndexOf("£");
+      price = detailedPrice.slice(finalPound, detailedPrice.length);
 
       data.push({
         'artist': artist,
-        'venue': venue
+        'venue': venue,
+        'date': date,
+        'price': price
       });
     })
 
