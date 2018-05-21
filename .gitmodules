@@ -1,0 +1,4 @@
+[submodule "tarp.require"]
+	path = tarp.require
+	url = https://github.com/letorbi/tarp.require.git
+	branch = tarp
